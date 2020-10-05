@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompensationsImpl implements CompensationService {
-    private static final Logger LOG = LoggerFactory.getLogger(CompensationsImpl.class);
+public class CompensationsServiceImpl implements CompensationService {
+    private static final Logger LOG = LoggerFactory.getLogger(CompensationsServiceImpl.class);
 
     @Autowired
     private CompensationRepository compensationRepository;
