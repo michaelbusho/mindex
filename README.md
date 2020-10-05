@@ -81,7 +81,6 @@ compensations (POST) and one with which users are able to get compensations (GET
 are saved in the in-memory mongo database and can be retreived by a GET Request.
 
 1.
-
      | Api Specification | |
      |:--------|----------|
      |Method|POST|
@@ -90,6 +89,7 @@ are saved in the in-memory mongo database and can be retreived by a GET Request.
      |Response|JSON object|
      
      The request body needs to have a json object with this format
+     
      ```json
         {
             "employee": {
