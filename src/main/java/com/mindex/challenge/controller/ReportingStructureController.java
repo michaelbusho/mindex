@@ -16,8 +16,7 @@ public class ReportingStructureController {
 
     @GetMapping("/reporting/{id}")
     public ReportingStructure generateReportingStructure(@PathVariable String id) {
-        LOG.debug("Received create-report request for employee with id {}", id);
-
+        LOG.debug("Received create-report request for employee with id [{}]", id);
         return reportingService.generateReportingStructure(id);
     }
 }
