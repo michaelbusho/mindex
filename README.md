@@ -2,7 +2,8 @@
 ## Deliverables 
 This section showcases what exactly is implemented for this coding challenge. To get started:
 1. Clone Repo
-2. Run `gradlew bootRun`
+2. If no permissions to execute gradlew add permissions by running `chmod +x gradlew`
+3. Run `gradlew bootRun`
 
 ### Task 1
 In this task a new REST endpoint was implemented that receives an *employee id* and returns **the numbers of
