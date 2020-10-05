@@ -47,7 +47,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
                 parent.setDirectReports(children);
                 report.setNumberOfReports(report.getNumberOfReports()+1);
 
-                addChildren(childEmployee, report);
+                addChildren(childEmployee, report); //Recursion to keep creating the hierarchy
             });
         }
     }
