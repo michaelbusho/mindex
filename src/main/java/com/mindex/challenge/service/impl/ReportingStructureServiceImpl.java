@@ -25,36 +25,30 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         LOG.debug("Creating report for employee with id [{}]", id);
 
         //Get target employee
-        List<Employee> allEmployees = employeeRepository.findAll();
-        Employee parent = findEmployee(id, allEmployees);
+        Employee parent = employeeRepository.findByEmployeeId(id);
 
         //Instantiate report obj
         ReportingStructure report = new ReportingStructure();
 
         //Create hierarchy of employees & get number of reports
-        addChildren(parent, allEmployees, report);
+        addChildren(parent, report);
         report.setEmployee(parent);
 
         return report;
     }
 
-    private void addChildren(Employee parent, List<Employee> all, ReportingStructure report) {
+    private void addChildren(Employee parent, ReportingStructure report) {
         if(parent != null && parent.getDirectReports() != null){
             List<Employee> children = new ArrayList<>();
+
             parent.getDirectReports().forEach(directEmployee -> {
-                Employee childEmployee = findEmployee(directEmployee.getEmployeeId(), all);
+                Employee childEmployee = employeeRepository.findByEmployeeId(directEmployee.getEmployeeId());
                 children.add(childEmployee);
                 parent.setDirectReports(children);
                 report.setNumberOfReports(report.getNumberOfReports()+1);
-                addChildren(childEmployee, all, report);
+
+                addChildren(childEmployee, report);
             });
         }
-    }
-
-    private Employee findEmployee(String id, List<Employee> employees ){
-        return employees.stream()
-                .filter(employee -> id.equals(employee.getEmployeeId()))
-                .findAny()
-                .orElse(null);
     }
 }
